@@ -53,7 +53,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Exe, TargetFormat.Deb)
             packageName = "com.arnyminerz.parquet_viewer"
-            packageVersion = "1.0.0"
+            packageVersion = "0.0.1"
         }
     }
 }
