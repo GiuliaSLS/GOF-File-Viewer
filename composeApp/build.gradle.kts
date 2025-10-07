@@ -55,5 +55,6 @@ compose.desktop {
             packageName = "com.arnyminerz.parquet_viewer"
             packageVersion = "0.0.1"
         }
+        jvmArgs += "--add-opens=java.base/java.nio=ALL-UNNAMED"
     }
 }
