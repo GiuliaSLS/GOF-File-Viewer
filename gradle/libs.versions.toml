@@ -1,0 +1,29 @@
+[versions]
+androidx-lifecycle = "2.9.4"
+apache-arrow = "18.3.0"
+composeHotReload = "1.0.0-beta07"
+composeMultiplatform = "1.9.0"
+kotlin = "2.2.20"
+kotlin-letsplot-compose = "3.0.0"
+kotlin-letsplot-kernel = "4.11.2"
+kotlin-letsplot-kmp = "4.7.3"
+kotlinx-coroutines = "1.10.2"
+filekit = "0.12.0"
+
+[libraries]
+apache-arrow-dataset = { module = "org.apache.arrow:arrow-dataset", version.ref = "apache-arrow" }
+apache-arrow-netty = { module = "org.apache.arrow:arrow-memory-netty", version.ref = "apache-arrow" }
+apache-arrow-vector = { module = "org.apache.arrow:arrow-vector", version.ref = "apache-arrow" }
+androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+kotlin-letsplot-compose = { module = "org.jetbrains.lets-plot:lets-plot-compose", version.ref = "kotlin-letsplot-compose" }
+kotlin-letsplot-kernel = { module = "org.jetbrains.lets-plot:lets-plot-kotlin-kernel", version.ref = "kotlin-letsplot-kernel" }
+kotlin-letsplot-kmp = { module = "org.jetbrains.lets-plot:lets-plot-common", version.ref = "kotlin-letsplot-kmp" }
+kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+filekit-dialogs-compose = { module = "io.github.vinceglb:filekit-dialogs-compose", version.ref = "filekit" }
+
+[plugins]
+composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
