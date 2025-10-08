@@ -54,6 +54,10 @@ compose.desktop {
             targetFormats(TargetFormat.Exe, TargetFormat.Deb)
             packageName = "com.arnyminerz.parquet_viewer"
             packageVersion = "0.0.1"
+
+            linux {
+                modules("jdk.security.auth")
+            }
         }
         jvmArgs += "--add-opens=java.base/java.nio=ALL-UNNAMED"
     }
