@@ -55,8 +55,13 @@ compose.desktop {
             packageName = "com.arnyminerz.parquet_viewer"
             packageVersion = "0.0.1"
 
+            description = "An application to view Giulia GOF files"
+
             linux {
                 modules("jdk.security.auth")
+            }
+            windows {
+                upgradeUuid = "85187b51-b97d-49a6-b99d-ff325ef10b86"
             }
         }
         jvmArgs += "--add-opens=java.base/java.nio=ALL-UNNAMED"
