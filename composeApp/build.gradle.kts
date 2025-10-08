@@ -1,3 +1,5 @@
+import java.util.Calendar
+import java.util.Properties
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -6,6 +8,24 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
 }
+
+fun readProperties(fileName: String): Properties? {
+    val propsFile = project.rootProject.file(fileName)
+    if (!propsFile.exists()) {
+        return null
+    }
+    if (!propsFile.canRead()) {
+        throw GradleException("Cannot read $fileName")
+    }
+    return Properties().apply {
+        propsFile.inputStream().use { load(it) }
+    }
+}
+
+val versionProperties = readProperties("version.properties")!!
+
+val appVersionName: String = versionProperties.getProperty("VERSION_NAME")
+val appVersionCode: String = versionProperties.getProperty("VERSION_CODE")
 
 kotlin {
     jvm()
@@ -53,15 +73,31 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Exe, TargetFormat.Deb)
             packageName = "com.arnyminerz.parquet_viewer"
-            packageVersion = "0.0.1"
+            packageVersion = appVersionName
 
             description = "An application to view Giulia GOF files"
+            copyright = "© ${
+                Calendar.getInstance().get(Calendar.YEAR)
+            } Arnau Mora Gras. All rights reserved."
+            vendor = "Arnau Mora Gras"
 
             linux {
                 modules("jdk.security.auth")
+
+                debMaintainer = "gof.viewer@arnyminerz.com"
+                menuGroup = "GOF Viewer"
+                appRelease = appVersionCode
+                debPackageVersion = appVersionName
+                rpmPackageVersion = appVersionName
             }
             windows {
                 upgradeUuid = "85187b51-b97d-49a6-b99d-ff325ef10b86"
+                dirChooser = true
+                perUserInstall = true
+                menuGroup = "GOF Viewer"
+                packageName = "GOF Viewer"
+                msiPackageVersion = appVersionName
+                exePackageVersion = appVersionName
             }
         }
         jvmArgs += "--add-opens=java.base/java.nio=ALL-UNNAMED"
