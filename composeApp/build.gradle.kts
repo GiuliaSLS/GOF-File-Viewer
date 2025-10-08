@@ -101,5 +101,9 @@ compose.desktop {
             }
         }
         jvmArgs += "--add-opens=java.base/java.nio=ALL-UNNAMED"
+
+        buildTypes.release.proguard {
+            isEnabled = false
+        }
     }
 }
